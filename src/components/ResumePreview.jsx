@@ -29,7 +29,7 @@ const generatePDF = () => {
                 <ul className="header-links">
                     <li>{data.email || "email@example.com"}</li>|
                     <li>{data.phone || "+919543288456"}</li>|
-                    <li>{data.github || "github.com/username"}</li>
+                    <li>{data.github || ""}</li>
                 </ul>
                 <hr />
 
