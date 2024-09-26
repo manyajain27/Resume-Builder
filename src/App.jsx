@@ -15,8 +15,8 @@ const App = () => {
         <Router>
             <div className="app-main">
                 <Routes>
-                    <Route path="/" element={<Login />} />
-                    <Route path="/resume" element={
+                    {/* <Route path="/" element={<Login />} /> */}
+                    <Route path="/" element={
                         <div className='app'>
                             <div className="left-panel">
                                 <ResumeInput resumeData={resumeData} setResumeData={setResumeData} />
