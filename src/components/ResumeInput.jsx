@@ -1,5 +1,6 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css'; // Make sure to import Bootstrap CSS
+import axios from 'axios';
 
 const ResumeInput = ({ resumeData, setResumeData }) => {
     // Function to handle input changes
@@ -77,10 +78,61 @@ const ResumeInput = ({ resumeData, setResumeData }) => {
         setResumeData({ ...resumeData, interests: newInterests });
     };
 
+    //prepare data in correct format
+    const prepareData = (formData) => {
+        return {
+            name: formData.name,
+            email: formData.email,
+            phone: formData.phone,
+            website: formData.website,
+            linkedin: formData.linkedin,
+            work_experience: formData.workExperience.map(exp => ({
+                company: exp.company,
+                start_date: exp.startDate,
+                end_date: exp.endDate,
+                position: exp.position,
+                location: exp.location,
+                description: exp.description
+            })),
+            education: formData.education.map(edu => ({
+                university: edu.university,
+                start_date: edu.startDate,
+                end_date: edu.endDate,
+                degree: edu.degree,
+                location: edu.location,
+                description: edu.description
+            })),
+            skills: formData.skills.map(skill => ({ skill_name: skill })),
+            interests: formData.interests.map(interest => ({ interest_name: interest }))
+        };
+    };
+    
+
+     const saveData = async () => {
+        const preparedData = prepareData(resumeData);
+        
+        try {
+            console.log(preparedData);
+            const response = await axios.post('http://localhost:8000/api/personal_details/', preparedData);
+            alert('Data saved successfully:', response.data);
+        } catch (error) {
+            alert('Error saving data', error);
+        }
+    };
+    
+    
+
     return (
-        <div className="container mt-4">
-            <div className="card">
-                <div className="card-body">
+        <>
+        <div className="title ms-4" style={{fontSize:"50px",fontWeight:"600",color: "#EDEDF0"}}>Resume Builder <span style={{fontSize:"20px", color:"gray"}}>by Manya.</span>
+                    <button className="btn btn-success " style={{marginLeft:"90px"}} onClick={saveData}>
+                        Save Resume
+                    </button>
+                    </div>
+        
+        <div className="container" style={{marginTop:"10px"}}>
+            <div className="card" style={{backgroundColor:"#EDEDF0"}}>
+                <div className="card-body" >
                     <h2 className="card-title">Personal Details</h2>
                     <div className="form-group">
                         <input
@@ -111,9 +163,9 @@ const ResumeInput = ({ resumeData, setResumeData }) => {
                         <input
                             type="text"
                             className="form-control mb-2"
-                            name="github"
-                            placeholder="GitHub"
-                            value={resumeData.github}
+                            name="website"
+                            placeholder="Website"
+                            value={resumeData.website}
                             onChange={handleInputChange}
                         />
                     </div>
@@ -140,6 +192,7 @@ const ResumeInput = ({ resumeData, setResumeData }) => {
                                 <select
                                     className="me-2"
                                     value={work.startMonth}
+                                    style={{border:"",borderRadius:"10px",padding:"3px"}}
                                     onChange={(e) => {
                                         const newWork = [...resumeData.workExperience];
                                         newWork[index].startMonth = e.target.value;
@@ -162,6 +215,7 @@ const ResumeInput = ({ resumeData, setResumeData }) => {
                                 </select>
                                 <select
                                     value={work.startYear}
+                                    style={{border:"",borderRadius:"10px",padding:"3px"}}
                                     onChange={(e) => {
                                         const newWork = [...resumeData.workExperience];
                                         newWork[index].startYear = e.target.value;
@@ -180,6 +234,7 @@ const ResumeInput = ({ resumeData, setResumeData }) => {
                                 <label className="me-3">End Date:</label>
                                 <br></br>
                                 <select
+                                style={{border:"",borderRadius:"10px",padding:"3px"}}
                                     className="me-2"
                                     value={work.endMonth}
                                     onChange={(e) => {
@@ -205,6 +260,7 @@ const ResumeInput = ({ resumeData, setResumeData }) => {
                                 </select>
                                 <select
                                     value={work.endYear}
+                                    style={{border:"",borderRadius:"10px",padding:"3px"}}
                                     onChange={(e) => {
                                         const newWork = [...resumeData.workExperience];
                                         newWork[index].endYear = e.target.value;
@@ -256,7 +312,7 @@ const ResumeInput = ({ resumeData, setResumeData }) => {
                             <button className="btn btn-danger btn-sm" onClick={() => deleteWorkExperience(index)}>Delete</button>
                         </div>
                     ))}
-                    <button className="btn btn-primary mb-3" onClick={addWorkExperience}>Add Work Experience</button>
+                    <button className="btn btn-dark mb-3" onClick={addWorkExperience}>Add Work Experience</button>
 
                     <h2 className="card-title">Education</h2>
                     {resumeData.education.map((edu, index) => (
@@ -279,6 +335,7 @@ const ResumeInput = ({ resumeData, setResumeData }) => {
     <select
         className="me-2"
         value={edu.startMonth}
+        style={{border:"",borderRadius:"10px",padding:"3px"}}
         onChange={(e) => {
             const newEdu = [...resumeData.education];
             newEdu[index].startMonth = e.target.value;
@@ -302,6 +359,7 @@ const ResumeInput = ({ resumeData, setResumeData }) => {
     </select>
     <select
         value={edu.startYear}
+        style={{border:"",borderRadius:"10px",padding:"3px"}}
         onChange={(e) => {
             const newEdu = [...resumeData.education];
             newEdu[index].startYear = e.target.value;
@@ -322,6 +380,7 @@ const ResumeInput = ({ resumeData, setResumeData }) => {
     <select
          className="me-2"
         value={edu.endMonth}
+        style={{border:"",borderRadius:"10px",padding:"3px"}}
         onChange={(e) => {
             const newEdu = [...resumeData.education];
             newEdu[index].endMonth = e.target.value;
@@ -345,6 +404,7 @@ const ResumeInput = ({ resumeData, setResumeData }) => {
     </select>
     <select
         value={edu.endYear}
+        style={{border:"",borderRadius:"10px",padding:"3px"}}
         onChange={(e) => {
             const newEdu = [...resumeData.education];
             newEdu[index].endYear = e.target.value;
@@ -395,7 +455,7 @@ const ResumeInput = ({ resumeData, setResumeData }) => {
                             <button className="btn btn-danger btn-sm" onClick={() => deleteEducation(index)}>Delete</button>
                         </div>
                     ))}
-                    <button className="btn btn-primary mb-3" onClick={addEducation}>Add Education</button>
+                    <button className="btn btn-dark mb-3" onClick={addEducation}>Add Education</button>
 
                     <h2 className="card-title">Skills</h2>
                     {resumeData.skills.map((skill, index) => (
@@ -414,7 +474,7 @@ const ResumeInput = ({ resumeData, setResumeData }) => {
                             <button className="btn btn-danger btn-sm" onClick={() => deleteSkill(index)}>Delete</button>
                         </div>
                     ))}
-                    <button className="btn btn-primary mb-3" onClick={addSkill}>Add Skill</button>
+                    <button className="btn btn-dark mb-3" onClick={addSkill}>Add Skill</button>
 
                     <h2 className="card-title">Interests</h2>
                     {resumeData.interests.map((interest, index) => (
@@ -433,10 +493,13 @@ const ResumeInput = ({ resumeData, setResumeData }) => {
                             <button className="btn btn-danger btn-sm" onClick={() => deleteInterest(index)}>Delete</button>
                         </div>
                     ))}
-                    <button className="btn btn-primary" onClick={addInterest}>Add Interest</button>
+                    <button className="btn btn-dark" onClick={addInterest}>Add Interest</button>
+                    
                 </div>
             </div>
         </div>
+        </>
+        
     );
 };
 

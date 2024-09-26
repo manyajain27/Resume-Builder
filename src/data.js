@@ -5,8 +5,6 @@ export const sampleData = {
     email: 'manyajain@example.com',
     phone: "+91929856732",
     website: 'https://manyajain.com',
-    linkedin: 'linkedin.com/in/manyajain',
-    github: 'github.com/manyajain',
     workExperience: [
         {
             company: 'Tech Corp',
