@@ -42,7 +42,9 @@ html{
     margin-top: 85px;
   
 }
-
+.resume-page{
+    max-width: 705px;
+}
 
 .header-links {
   list-style: none;

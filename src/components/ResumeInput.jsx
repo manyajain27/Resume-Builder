@@ -1,16 +1,24 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css'; // Make sure to import Bootstrap CSS
 import axios from 'axios';
 
 const ResumeInput = ({ resumeData, setResumeData }) => {
+
+    useEffect(() => {
+        if (resumeData) {
+            console.log('Populating form with resumeData:', resumeData); 
+            setResumeData(resumeData);
+        }
+    }, [resumeData]);
+
     // Function to handle input changes
     const handleInputChange = (e) => {
         const { name, value } = e.target;
         setResumeData({
             ...resumeData,
-            [name]: value
+            [name]: value,
         });
-    };
+    }
 
     // Function to handle adding work experience
     const addWorkExperience = () => {

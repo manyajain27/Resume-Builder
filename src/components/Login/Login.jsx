@@ -1,9 +1,7 @@
-import React, {useState,useEffect} from 'react';
-import { Link, useLocation, Navigate } from 'react-router-dom';
+import React, {useState} from 'react';
+import { Link,  Navigate } from 'react-router-dom';
 import {connect} from 'react-redux';
 import axios from 'axios';
-import { googleAuthenticate } from '../../actions/auth';
-import queryString from 'query-string';
 import './Login.css';
 import {
   MDBContainer,
@@ -40,21 +38,17 @@ const continueWithGoogle = async () => {
     }
 };
 
+const continueWithLinkedIn = async () => {
+  try {
+      const res = await axios.get(`${process.env.REACT_APP_API_URL}/auth/o/linkedin-oauth2/?redirect_uri=${process.env.REACT_APP_API_URL}/linkedin`);
 
-  let location = useLocation();
+      window.location.replace(res.data.authorization_url);  // Redirects to LinkedIn for authentication
+  } catch (err) {
+      console.error(err);
+  }
+};
 
-  useEffect(() => {
-      const values = queryString.parse(location.search);
-      const state = values.state ? values.state : null;
-      const code = values.code ? values.code : null;
-
-      console.log('State: ' + state);
-      console.log('Code: ' + code);
-
-      if (state && code) {
-          googleAuthenticate(state, code);
-      }
-  }, [location]);
+  
 
 
 
@@ -115,7 +109,7 @@ if(isAuthenticated){
                       </div>
 
                       <button className="mb-3 w-100 btn btn-dark" size="lg" type='submit'>Sign in</button>
-                      <p>Don't have an account? <Link to='/signup' style={{color:"#212529"}}>Sign Up</Link></p>
+                      <p className='text-center'>Don't have an account? <Link to='/signup' style={{color:"#212529"}}>Sign Up</Link></p>
                       <div className="divider d-flex align-items-center my-4">
                         <p className="text-center fw-bold mx-3 mb-0">OR</p>
                       </div>
@@ -130,7 +124,7 @@ if(isAuthenticated){
                         Continue with Google
                       </button>
 
-                      <button className="mb-4 w-100 btn btn-light" size="lg" style={{backgroundColor: ''}}>
+                      <button onClick={continueWithLinkedIn} className="mb-4 w-100 btn btn-light" size="lg" style={{backgroundColor: ''}}>
                       <svg stroke="currentColor" style={{scale:"1.5",marginBottom:"4px",marginRight:"25px"}} fill="currentColor" stroke-width="0" version="1.1" viewBox="0 0 16 16" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M14.5 0h-13c-0.825 0-1.5 0.675-1.5 1.5v13c0 0.825 0.675 1.5 1.5 1.5h13c0.825 0 1.5-0.675 1.5-1.5v-13c0-0.825-0.675-1.5-1.5-1.5zM6 13h-2v-7h2v7zM5 5c-0.553 0-1-0.447-1-1s0.447-1 1-1c0.553 0 1 0.447 1 1s-0.447 1-1 1zM13 13h-2v-4c0-0.553-0.447-1-1-1s-1 0.447-1 1v4h-2v-7h2v1.241c0.412-0.566 1.044-1.241 1.75-1.241 1.244 0 2.25 1.119 2.25 2.5v4.5z"></path></svg>
                         Continue with LinkedIn
                       </button>

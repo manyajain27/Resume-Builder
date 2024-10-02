@@ -15,6 +15,8 @@ import {
     ACTIVATION_FAIL,
     GOOGLE_AUTH_SUCCESS,
     GOOGLE_AUTH_FAIL,
+    LINKEDIN_AUTH_SUCCESS,
+    LINKEDIN_AUTH_FAIL,
     LOGOUT
 } from '../actions/types'
 
@@ -62,7 +64,8 @@ export default function(state = initialState, action) {
                 ...state,
                 user: null
             }
-            case GOOGLE_AUTH_SUCCESS:
+        case LINKEDIN_AUTH_SUCCESS:
+        case GOOGLE_AUTH_SUCCESS:
                 localStorage.setItem('access', payload.access);
                 // localStorage.setItem('refresh', payload.refresh);
                 return {
@@ -71,7 +74,7 @@ export default function(state = initialState, action) {
                     access: payload.access,
                     refresh: payload.refresh
                 }
-
+        case LINKEDIN_AUTH_FAIL:
         case GOOGLE_AUTH_FAIL:
         case LOGIN_FAIL:
         case SIGNUP_FAIL:

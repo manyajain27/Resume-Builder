@@ -7,7 +7,7 @@ export const sampleData = {
     website: 'https://manyajain.com',
     workExperience: [
         {
-            company: 'Tech Corp',
+            company: 'ABC Company',
             startDate: 'Aug 2022',
             endDate: 'Present',
             position: 'Software Engineer',
@@ -18,7 +18,7 @@ export const sampleData = {
             ]
         },
         {
-            company: 'Tech Corp',
+            company: 'XYZ Company',
             startDate: 'Aug 2022',
             endDate: 'Present',
             position: 'Software Engineer',
@@ -42,7 +42,7 @@ export const sampleData = {
             ]
         },
         {
-            university: 'State University',
+            university: 'ABC High School',
             startDate: 'Sep 2018',
             endDate: 'May 2022',
             degree: 'Bachelor of Science in Computer Science',

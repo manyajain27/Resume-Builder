@@ -17,7 +17,9 @@ const Activate = ({ verify }) => {
     };
 
     if (verified) {
+        alert("Account Verified!");
         return <Navigate to='/resume' />
+        
     }
 
     return (
@@ -31,7 +33,7 @@ const Activate = ({ verify }) => {
                     onClick={e=>verify_account(e)}
                     style={{ marginTop: '50px' }}
                     type='button'
-                    className='btn btn-primary'
+                    className='btn btn-dark'
                 >
                     Verify
                 </button>

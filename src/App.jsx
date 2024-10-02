@@ -5,20 +5,20 @@ import ResumeInput from './components/ResumeInput';
 import ResumePreview from './components/ResumePreview';
 import Login from './components/Login/Login';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { BrowserRouter as Router, Route, Routes, Switch} from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes} from 'react-router-dom';
 import { sampleData } from './data';
 import Signup from './container/Signup';
 import ResetPassword from './container/ResetPassword';
 import ResetPasswordConfirm from './container/ResetPasswordConfirm';
 import Activate from './container/Activate';
+import Google from './container/Google';
 import { Provider } from 'react-redux';
 import store from './store';
- 
-//todo:
-// if incorrect password sisplay incorrect password
-// when clicking reset password display on screen to check email and confirm
+import CheckMail from './container/CheckMail';
+
 const App = () => {
     const [resumeData, setResumeData] = useState(sampleData);
+
     return (
         <Provider store={store}>
             <Router>
@@ -31,7 +31,8 @@ const App = () => {
                                     <ResumeInput resumeData={resumeData} setResumeData={setResumeData} />
                                 </div>
                                 <div className="right-panel">
-                                    <ResumePreview data={resumeData} />
+                                    {/* Pass setResumeData to ResumePreview */}
+                                    <ResumePreview data={resumeData} setResumeData={setResumeData} />
                                 </div>
                             </div>
                         } />
@@ -39,11 +40,12 @@ const App = () => {
                         <Route path="/reset-password" element={<ResetPassword />} />
                         <Route path="/password/reset/confirm/:uid/:token" element={<ResetPasswordConfirm />} />
                         <Route path="/signup" element={<Signup />} />
+                        <Route path='/google' element={<Google />} />
+                        <Route path='/mail' element={<CheckMail/>} />
                     </Routes>
                 </div>
             </Router>
         </Provider>
-        
     );
 };
 
