@@ -123,7 +123,7 @@ const ResumeInput = ({ resumeData, setResumeData }) => {
         
         try {
             console.log(preparedData);
-            const response = await axios.post('https://manyajain05.pythonanywhere.com/api/personal_details/', preparedData);
+            const response = await axios.post('https://manyajain2701.pythonanywhere.com/api/personal_details/', preparedData);
             alert('Data saved successfully:', response.data);
         } catch (error) {
             alert('Error saving data', error);

@@ -67,7 +67,7 @@ const ResumePreview = ({ data, setResumeData  }) => {
         setLoading(true);
 
         try {
-            const response = await axios.post('https://manyajain05.pythonanywhere.com/api/upload/', formData, {
+            const response = await axios.post('https://manyajain2701.pythonanywhere.com/api/upload/', formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data',
                 },
