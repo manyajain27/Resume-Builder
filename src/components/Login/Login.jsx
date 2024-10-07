@@ -72,7 +72,7 @@ if(isAuthenticated){
             <li style={{marginTop:"10px"}}>Download the resume made in pdf format.</li>
           </ul>
         </MDBCol>
-            <MDBCol col='4' md='6' className='container signup-container' style={{padding:"0 20px 0 20px",maxWidth:"380px",maxHeight:"560px",boxShadow:"0 0 10px darkslategray",background:"rgba(0,0,0,0.1)",borderRadius:"20px"}}>
+            <MDBCol col='4' md='6' className='container signup-container' style={{padding:"0 20px 0 20px",maxWidth:"380px",maxHeight:"510px",boxShadow:"0 0 10px darkslategray",background:"rgba(0,0,0,0.1)",borderRadius:"20px"}}>
                 <form onSubmit={e=>onSubmit(e)}>
 
 
@@ -114,7 +114,7 @@ if(isAuthenticated){
                         <p className="text-center fw-bold mx-3 mb-0">OR</p>
                       </div>
 
-                      <button onClick={continueWithGoogle} className="mb-4 w-100 btn btn-light" size="lg" style={{backgroundColor: ''}}>
+                      <button onClick={continueWithGoogle} className="mb-4 w-100 btn btn-light mt-2" size="lg" style={{backgroundColor: ''}}>
                       <svg stroke="currentColor" style={{scale:"1.5",marginBottom:"4px",marginRight:"30px"}} fill="currentColor" stroke-width="0" version="1.1" x="0px" y="0px" viewBox="0 0 48 48" enable-background="new 0 0 48 48" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path fill="#FFC107" d="M43.611,20.083H42V20H24v8h11.303c-1.649,4.657-6.08,8-11.303,8c-6.627,0-12-5.373-12-12
               c0-6.627,5.373-12,12-12c3.059,0,5.842,1.154,7.961,3.039l5.657-5.657C34.046,6.053,29.268,4,24,4C12.955,4,4,12.955,4,24
               c0,11.045,8.955,20,20,20c11.045,0,20-8.955,20-20C44,22.659,43.862,21.35,43.611,20.083z"></path><path fill="#FF3D00" d="M6.306,14.691l6.571,4.819C14.655,15.108,18.961,12,24,12c3.059,0,5.842,1.154,7.961,3.039l5.657-5.657
@@ -124,10 +124,10 @@ if(isAuthenticated){
                         Continue with Google
                       </button>
 
-                      <button onClick={continueWithLinkedIn} className="mb-4 w-100 btn btn-light" size="lg" style={{backgroundColor: ''}}>
+                      {/* <button onClick={continueWithLinkedIn} className="mb-4 w-100 btn btn-light" size="lg" style={{backgroundColor: ''}}>
                       <svg stroke="currentColor" style={{scale:"1.5",marginBottom:"4px",marginRight:"25px"}} fill="currentColor" stroke-width="0" version="1.1" viewBox="0 0 16 16" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M14.5 0h-13c-0.825 0-1.5 0.675-1.5 1.5v13c0 0.825 0.675 1.5 1.5 1.5h13c0.825 0 1.5-0.675 1.5-1.5v-13c0-0.825-0.675-1.5-1.5-1.5zM6 13h-2v-7h2v7zM5 5c-0.553 0-1-0.447-1-1s0.447-1 1-1c0.553 0 1 0.447 1 1s-0.447 1-1 1zM13 13h-2v-4c0-0.553-0.447-1-1-1s-1 0.447-1 1v4h-2v-7h2v1.241c0.412-0.566 1.044-1.241 1.75-1.241 1.244 0 2.25 1.119 2.25 2.5v4.5z"></path></svg>
                         Continue with LinkedIn
-                      </button>
+                      </button> */}
 
                   </form>
             </MDBCol>
