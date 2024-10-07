@@ -11,6 +11,8 @@ const ResumeInput = ({ resumeData, setResumeData }) => {
         }
     }, [resumeData]);
 
+    
+
     // Function to handle input changes
     const handleInputChange = (e) => {
         const { name, value } = e.target;

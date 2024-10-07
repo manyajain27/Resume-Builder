@@ -17,9 +17,15 @@ const ResumePreview = ({ data, setResumeData  }) => {
     };
 
     const handleLogout = () => {
-        // localStorage.removeItem('token');
+        localStorage.removeItem('token'); 
+        localStorage.removeItem('access'); 
+        localStorage.removeItem('refresh'); 
+    
+        // Optionally, reload the page to ensure all states are cleared
         navigate('/');
+        window.location.reload();  // This will force the page to refresh after redirection
     };
+    
 
     const transformApiResponseToSampleData = (apiResponse) => {
         return {

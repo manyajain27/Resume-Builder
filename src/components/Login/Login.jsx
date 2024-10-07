@@ -57,12 +57,12 @@ if(isAuthenticated){
 }
 
   return (
-    <MDBContainer fluid className="p-3 container" style={{marginTop:"100px"}}>
+    <MDBContainer fluid className="p-3 container main-container" style={{}}>
 
       <MDBRow>
 
-        <MDBCol col='10' md='6'>
-          <div className="title" style={{fontSize:"100px",fontWeight:"600",color:"lightblue",lineHeight:"1.2"}}>Resume Builder <span style={{fontSize:"30px",color:"gray",}}>by Manya.</span></div>
+        <MDBCol col='10' md='6' className='divider'>
+          <div className="title main-title" style={{fontWeight:"600",color:"lightblue",lineHeight:"1.2"}}>Resume Builder <span style={{color:"gray"}}>by Manya.</span></div>
           <ul className="info text-white" style={{fontSize:"20px",color:"whitesmoke",marginTop:"20px",listStyleType:"circle"}}>
             <li style={{marginTop:"10px"}}>Completely free and easy to use.</li>
             <li style={{marginTop:"10px"}}>Only 1 standard professional resume format.</li>
@@ -72,7 +72,7 @@ if(isAuthenticated){
             <li style={{marginTop:"10px"}}>Download the resume made in pdf format.</li>
           </ul>
         </MDBCol>
-            <MDBCol col='4' md='6' className='container' style={{padding:"0 20px 0 20px",maxWidth:"380px",boxShadow:"0 0 10px darkslategray",background:"rgba(0,0,0,0.1)",borderRadius:"20px"}}>
+            <MDBCol col='4' md='6' className='container signup-container' style={{padding:"0 20px 0 20px",maxWidth:"380px",maxHeight:"560px",boxShadow:"0 0 10px darkslategray",background:"rgba(0,0,0,0.1)",borderRadius:"20px"}}>
                 <form onSubmit={e=>onSubmit(e)}>
 
 
@@ -105,11 +105,11 @@ if(isAuthenticated){
 
                       <div className="d-flex justify-content-between mx-4 mb-4">
                         <MDBCheckbox name='flexCheck' value='' id='flexCheckDefault' label='Remember me' />
-                        <Link to='/reset-password' style={{color:"#212529"}}>Forgot password?</Link>
+                        <Link to='/reset-password' className='forgot-pass' style={{color:""}}>Forgot password?</Link>
                       </div>
 
                       <button className="mb-3 w-100 btn btn-dark" size="lg" type='submit'>Sign in</button>
-                      <p className='text-center'>Don't have an account? <Link to='/signup' style={{color:"#212529"}}>Sign Up</Link></p>
+                      <p className='text-center signup'>Don't have an account? <Link to='/signup' className='signup' style={{color:""}}>Sign Up</Link></p>
                       <div className="divider d-flex align-items-center my-4">
                         <p className="text-center fw-bold mx-3 mb-0">OR</p>
                       </div>

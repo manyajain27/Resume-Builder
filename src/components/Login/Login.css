@@ -9,4 +9,46 @@
 body{
     background-image: linear-gradient(to right,black , darkslategray,darkgray);
 }
+.main-container{
+  margin-top:100px;
+}
+.forgot-pass,.signup{
+  color: #212529;
+}
+span{
+  font-size:30px;
+}
+.main-title{
+  font-size:100px;
+}
+@media only screen and (max-width: 768px){
+  body{
+    background-image: linear-gradient(to bottom,black , darkslategray,darkgray);
+    padding-bottom:50px;
+}
 
+  .divider{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:15px;
+    margin-bottom:20px;
+  }
+  .main-title{
+    font-size:50px;
+  }
+  li{
+   display:none;
+  }
+  .main-container{
+    margin-top:0;
+  }
+  .container{
+    margin-top:10px;
+    margin-bottom:30px;
+  }
+  .signup,.forgot-pass,label{
+    color:lightgray;
+  }
+  
+}
